@@ -16,25 +16,37 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-        
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-        
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
+//        // Get label node from scene and store it for use later
+//        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
+//        if let label = self.label {
+//            label.alpha = 0.0
+//            label.run(SKAction.fadeIn(withDuration: 2.0))
+//        }
+//        
+//        // Create shape node to use during mouse interaction
+//        let w = (self.size.width + self.size.height) * 0.05
+//        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
+//        
+//        if let spinnyNode = self.spinnyNode {
+//            spinnyNode.lineWidth = 2.5
+//            
+//            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
+//            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
+//                                              SKAction.fadeOut(withDuration: 0.5),
+//                                              SKAction.removeFromParent()]))
+//        }
+        // 创建一个文字标签并制定字体
+        let myLabel = SKLabelNode(fontNamed: "Chalkduster")
+        // 指定文字标签的内容
+        myLabel.text = "Hello, Sprite"
+        // 指定文字大小
+        myLabel.fontSize = 65
+        // 指定文字颜色
+        myLabel.fontColor = UIColor.yellow
+        // 指定文字标签在屏幕中的位置
+        myLabel.position = CGPoint(x: self.size.width + 100, y: self.size.height + 100)
+        // 将文字标签添加到这个场景中
+        self.addChild(myLabel)
     }
     
     
